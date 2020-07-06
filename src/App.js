@@ -1,24 +1,19 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React , {useState} from "react";
+import "./App.css";
+import Login from "./Components/Login";
+import Register from "./Components/Register";
+import NavBar from "./Components/NavBar";
+import { Switch, Route } from "react-router-dom";
 
 function App() {
+  const [currentUser, setUser] = useState(null)
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <NavBar currentUser={currentUser}/>
+      <Switch>
+        <Route component={Login} path="/login" />
+        <Route component={Register} path="/register" />
+      </Switch>
     </div>
   );
 }
